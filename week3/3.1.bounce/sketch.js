@@ -2,13 +2,9 @@ let x = 0;
 let y = 0;
 let xspeed = 2;
 let yspeed = 2;
-let = img;
-let sampleX = 12;
-let sampleY = 14;
 
-function preload(){
-  img = loadImage('https://stephenmcc48.github.io/creative-coding/week2/pixels/GreenLantern.jpg');
-}
+
+
 
 function setup() {
   createCanvas(400, 400, WEBGL);
