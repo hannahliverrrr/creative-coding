@@ -1,7 +1,7 @@
 let rings = [];
 
 function preload(){
-  cursorImg = loadImage("https://static.vecteezy.com/system/resources/previews/019/017/599/original/an-8-bit-retro-styled-pixel-art-illustration-of-a-goblin-free-png.png")
+  cursorImg = loadImage("https://stephenmcc48.github.io/creative-coding/week3/3.3.ripples/Tof.png")
 }
 function setup() {
   createCanvas(800, 800);
@@ -15,9 +15,18 @@ function mouseDragged(){
 
 function draw() {
   background(0, 0, 0);
-  image(cursorImg, mouseDragged);
+ image(cursorImg, mouseX, mouseY);
 
-  for (let x = 0; x < 9; x += 1) {
+  
+
+  for (let i = 0; i < rings.length; i++) {
+    rings[i].display();
+    rings[i].grow();
+    rings[i].fade()
+    
+    if (rings[i].apha< 0){
+    rings.splice(i,4);
+for (let x = 0; x < 9; x += 1) {
     for (let y = 0; y < 9; y += 1) {
       push();
 
@@ -32,16 +41,8 @@ translate(x * 87, y * 86);
       pop();
     }
   }
-
-  for (let i = 0; i < rings.length; i++) {
-    rings[i].display();
-    rings[i].grow();
-    rings[i].fade()
     
-    if (rings[i].apha< 0){
-    rings.splice(i,4);
-
-    cursor(CROSS);
+   
     }
   }
 }
