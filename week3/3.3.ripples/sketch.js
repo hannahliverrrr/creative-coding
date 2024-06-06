@@ -66,7 +66,7 @@ class Ring {
   }
 
   grow() {
-    this.d += random(1.5,7);
+    this.d += random(1.5,8);
   }
   
   fade() {
