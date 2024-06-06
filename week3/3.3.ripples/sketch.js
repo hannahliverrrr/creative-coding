@@ -1,11 +1,13 @@
 let rings = [];
+let colors = [];
 
-function preload(){
-  cursorImg = loadImage("https://stephenmcc48.github.io/creative-coding/week3/3.3.ripples/Tof.png")
-}
 function setup() {
   createCanvas(800, 800);
-  noCursor();
+  
+  for (let c = 0; c < 100; c++){
+    colors.push([random(0),random(34),random(255)]);
+    frameRate(16)
+  }
 }
 
 function mouseDragged(){
@@ -15,9 +17,27 @@ function mouseDragged(){
 
 function draw() {
   background(0, 0, 0);
- image(cursorImg, mouseX, mouseY);
 
-  
+  for (let x = 0; x < 9; x += 1) {
+    for (let y = 0; y < 9; y += 1) {
+
+   
+      push();
+    
+
+
+
+translate(x * 87, y * 86);
+      strokeWeight(9)
+    stroke(random(0, 255),180,221);
+
+    fill(random(34, 255), 220, 223);
+
+      rect(7,5,90,100);
+
+      pop();
+    }
+  }
 
   for (let i = 0; i < rings.length; i++) {
     rings[i].display();
@@ -26,50 +46,31 @@ function draw() {
     
     if (rings[i].apha< 0){
     rings.splice(i,4);
-for (let x = 0; x < 9; x += 1) {
-    for (let y = 0; y < 9; y += 1) {
-      push();
-
-
-translate(x * 87, y * 86);
-      strokeWeight(9)
-    stroke(random(0, 255),180,221);
-
-    fill(34, 77, 220);
-
-      rect(7,5,90,100);
-      pop();
-    }
-  }
-    
-   
     }
   }
 }
-
-
 
 class Ring {
   constructor(x,y) {
     this.x = x;
     this.y = y;
     this.d = 4;
-    this.alpha=220
+    this.alpha=255
   }
 
   display() {
     noFill();
-    strokeWeight(5);
-    stroke(random(0,255), 145, 220, this.alpha);
+    strokeWeight(4);
+    stroke(random(0,255), 200, 255, this.alpha);
     circle(this.x, this.y, this.d);
   }
 
   grow() {
-    this.d += random(1.5,3);
+    this.d += random(1.5,7);
   }
   
   fade() {
-    this.alpha -=random(1,6)
+    this.alpha -= random(5,14)
 }
 }
 
