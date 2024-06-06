@@ -17,7 +17,7 @@ function draw() {
 
 textSize(20);
 
-    translate(width / 20000, height / 2000);
+    translate(width / 20000, height / 20000);
 //let rotation_amount =random(23, 24);
  //let rotate_by = map (x, 0,rotation_amount, 0, rotation_amount * yspeed);
     //rotate(rotate_by);
@@ -25,7 +25,7 @@ textSize(20);
   
  ellipse(x,28,14)
   
-  ellipse(89,y, 20)
+  ellipse(100,y, 20)
   ellipse(89,y, 10)
 
   ellipse(x,yspeed, 20)
