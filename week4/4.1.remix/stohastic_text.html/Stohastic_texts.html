@@ -18,9 +18,13 @@
 	<style>
 		body {
 			margin: 0;
-			font-family: monospace;
-			font-size: clamp(1rem, 1vw, 1.5rem);
+			font-family: cursive;
+			font-size: clamp(2rem, 2vw, 4.5rem);
 			overflow:hidden;
+
+			color: blueviolet;
+			background: forestgreen;
+
 		}
 		header {
 			background: #ddd;
@@ -52,12 +56,12 @@
 	<script>
 		var t = 0, caps = false, pause = false;
 
-		const subjects = ['count', 'breathe', 'look', 'church', 'castle', 
-			'picture', 'superhero', 'bubbles', 'non-operational', 'farmer', 'way', 'doctor', 
-			'day', 'Sputnik', 'memory', 'angel', 'wings', 'joint', 'Spiderman', 'crowd', 'rap assassinator','chain', 'one-armed', 'bear', 'barricade', 'world', 'deftons'],
-		predicates = ['open', 'silent', 'strong', 'good', 'relaxing', 'near', 
-			'hi-tech', 'ghoslty', 'quiet', 'near', 'deep', 'late', 'free', 
-			'large', 'angry', 'horrid', 'threw', 'loud', 'bangaranging', 'tactics'],
+		const subjects = ['Beastie Boys', 'breathe', 'look', 'church', 'castle', 
+			'picture', 'superhero', 'bubbles', 'non-operational', 'beef', 'way', 'doctor', 
+			'day', 'Sputnik', 'memory', 'angel', 'wings', 'joint', 'Spiderman', 'crowd', 'rap assassinator','storm', 'Ghostbusters', 'bear', 'barricade', 'world', 'deftons', ],
+		predicates = ['open', 'dizzy', 'strapped', 'good', 'relaxing', 'near', 
+			'hi-tech', 'ghoslty', 'quiet', 'near', 'deep', 'late', 'pork and beans', 
+			'large', 'gross', 'horrid', 'threw', 'loud', 'bangaranging', 'frightful'],
 		conjunctions = [' and ', ' or ', ' therefore ', '. ', '. ', '. ', 
 			'. ', '. '],
 		quants = ['a', 'every', 'no', 'not every', 'until then the'];
@@ -130,7 +134,7 @@
 <body onload=nextText()>
 	<header id=nav>
 		<h1>
-			<span style="float: right; font-size: 150%; clear:both"><a id=pb 
+			<span style="float: right; font-size: 250%; clear:both"><a id=pb 
 			onclick="pause=!pause;pb.style.color=pause?'black':'red'">⏸</a>
 			<a id=cl 
 			onclick="caps=!caps;cl.style.color=caps?'black':'red'">⇪</a> 
@@ -143,6 +147,7 @@
 			also in <a href="stochastic_texts.py">Python 2/3</a><br>
 			from <a href="https://nickm.com/memslam">Memory Slam 2.0:</a> 
 			Batch-Era Text Generators
+
 		</h1>
 		</header>
 	<div id=main></div>
