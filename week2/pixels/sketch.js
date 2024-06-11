@@ -1,7 +1,7 @@
 
 let img;
-let sampleX = 12;
-let sampleY = 14;
+let sampleX = 20;
+let sampleY = 12;
 
 
 
@@ -17,7 +17,8 @@ function setup() {
 
 function draw() {
   background('forestgreen');
-for (let lineX = 0; lineX < 1; lineX += 1) {
+
+for (let lineX = 0; lineX < 2; lineX += 1) {
     for (let lineY = 0; lineY < 2; lineY += 1) {
  
   for (let x = 0; x < 1; x += 1) {
@@ -26,29 +27,9 @@ for (let lineX = 0; lineX < 1; lineX += 1) {
       
    
 
-      push();
-
       
-    
-    translate(x * 100, y * 100);
 
-    
-    stroke(122,34,33, 200);
-    strokeWeight(5)
-   
-    
-
-    stroke(12,23,222);
-    
-
-
-
-    
-
-
-      pop();
-
-strokeWeight( random(3, 2)  );    
+strokeWeight( random(1, 5)  );    
 stroke(random(0, 255),120,255);
     frameRate(7)
  
