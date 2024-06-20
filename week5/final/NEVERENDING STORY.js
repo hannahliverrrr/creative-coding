@@ -17,6 +17,6 @@ function draw() {
   background("brown");
   poem = grammar.flatten("#origin#");
   textFont("impact");
-  textSize(30);
+  textSize(10);
   text(poem,5,60);
 }
