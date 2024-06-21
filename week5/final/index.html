@@ -2,19 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 
+    <!-- include the Tracery library -->
+    <!-- <script src="tracery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/tracery-grammar@2.7.4/tracery.min.js"></script>
 
-
-    <title>Final Project</title> 
-
+    <title>Epic Story</title> 
+    
 
     <style type="text/css">
-      
+        body {
+            background-color:#334433;
+            background-image: url(https://goblinsupreme.com/wp-content/uploads/2021/09/JohNi-reading-300x228.webp);
+        }
+        main {
+            width: 100%;
+        }
+        canvas {
+            display:block;
+            margin: 0 auto;
+        }
+
+        .welcome {
+            width:550px; 
+            margin:0 auto;
+            position: relative;
+            bottom: -200px;
+            text-align: center;
+            color: mediumpurple;
+            display: block;
+            background-color: yellow;
+        }
+         .Want {
+              width:550px; 
+            margin:0 auto;
+            position: relative;
+            bottom: -660px;
+            right: -610px;
+            font-size: 25px;
+            font-family: cursive;
+            display: block;
+            background-color: yellow;
+            width: 27%;
+            text-align: center;
+            border-bottom: 40%;
+         }
+         .CAN {
+            width:550px; 
+            margin:0 auto;
+            position: relative;
+            bottom: -200px;
+            text-align: center;
+            color: mediumpurple;
+            display: block;
+            background-color: yellow;
+         }
+
+        .APOCALYPSE:hover {
+            color: red;
+            font-size: 30px;
+
+        }
+        .SURVIVE:hover {
+            color: red;
+            font-size: 30px;
+        }
+        
     </style>
 
 </head>
 <body>
+    <div>
+    <h1 class="welcome">WELCOME TO FUNKY STORIES</h1>
+    <h2 class="CAN"> CAN <em>YOU</em> <strong class="SURVIVE">SURVIVE</strong> THE <strong class="APOCALYPSE">APOCALYPSE?</strong></h2>
+    <ol class="Want"> WANT TO <em style="color: red;">READ MORE?</em><br>
+        <ul> Want to make a <a href="Potion.html">potion</a>?</ul>
+
+        <ul> Wanna go to <a href="RANDO.html">space?<a> <strong style="color:red;">FAIR WARNING:</strong> the signal is pretty bad up there so the text you'll be getting will be jumbeled up!<br>
+
+        <ul>Want To Figure Out What <a href="POEM.html">My Real Name</a> Is?</ul>
+
+    </ol>
+</div>
+
+</div>
+
+
     <main>
     </main>
     <script src="sketch.js"></script>
