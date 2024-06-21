@@ -20,7 +20,7 @@ let grammar = tracery.createGrammar({
 });
 
 function setup() {
-  createCanvas(1500, 830);
+  createCanvas(1500, 840);
   noLoop()
 }
 
