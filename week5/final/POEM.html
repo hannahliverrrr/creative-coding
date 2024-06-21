@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--
+	Green Lantern Permutation Poem by Steve 
+	
+	based on Nick Montfront's 2024 implenebtation of an original by Brion Gysin and Ian Sommerville.
+
+	https://nickm.com/memslam/permutation_poems.html
+
+	Copying and distribution of this file, with or without modification,
+	are permitted in any medium without royalty provided the copyright
+	notice and this notice are preserved. This file is offered as-is,
+	without any warranty.
+	-->
+	<style>
+		body {
+			margin: 0;
+			font-family: monospace;
+			font-size: clamp(5rem, 6vw, 3.5rem);
+			overflow:hidden;
+			color: goldenrod;
+			background: black;
+			background-image: url(https://www.telegraph.co.uk/content/dam/films/2021/10/01/casino-royale_trans_NvBQzQNjv4Bq3Fh5VY2Bz-juTe8P68vP6stl4wH-QVoA1_nWU5B-emI.png) ;
+
+		}
+		header {
+			background: #ddd;
+			margin: 0;
+			border-bottom: #eee solid .2rem;
+			width: 100%;
+			height: 6.1rem;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 1000;
+			font-size: 30px;
+			color: black;
+			background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA6yHCvnz0uCKxSbM1ZCB5_vvtu_mnCjfFZg&s) ;
+
+
+
+		}
+		header > h1 {
+			padding: .3rem .8rem .2rem .8rem;
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', 
+				serif;
+			font-size: .85rem;
+			font-weight: normal;
+			white-space: nowrap;
+
+			
+		}
+		a {
+			text-decoration: none;
+			color: green;
+		}
+		#main {
+			padding: 10rem 10vw 3vh 2vw;
+		}
+	</style>
+	<script>
+		const words = ['THE', 'NAME', 'IS', 'BOND', 'JAMES', 'BOND']
+
+		function fullscreenListeners(f)
+		{
+			f("mozfullscreenchange", fullscreenEvt);
+			f("MSFullscreenChange", fullscreenEvt);
+			f("fullscreenchange", fullscreenEvt);
+			f("webkitfullscreenchange", fullscreenEvt);
+		}
+
+		function fullscreenEvt(incomingReq)
+		{
+			fullscreenListeners(document.removeEventListener);
+			if(incomingReq === true || document.mozFullScreen || 
+			document.fullscreenElement || document.webkitIsFullScreen || 
+			document.msFullscreenElement) {
+				var fsElt;
+				if(window.c instanceof HTMLCanvasElement) fsElt = window.c;
+				else fsElt = document.documentElement;
+				if (fsElt.requestFullscreen) fsElt.requestFullscreen();
+				else if (fsElt.msRequestFullscreen) fsElt.msRequestFullscreen();
+				else if (fsElt.mozRequestFullScreen)
+					fsElt.mozRequestFullScreen();
+				else if (fsElt.webkitRequestFullScreen) 
+					fsElt.webkitRequestFullScreen();
+				nav.style.display = "none";
+				main.style.paddingTop = "0";
+			}
+			else nav.style.display = "block";
+			main.style.paddingTop = "9rem";
+			if (typeof l === "function") setTimeout(l, 200);
+			fullscreenListeners(document.addEventListener);
+		}
+
+		// Note that while the following function produces all permutations,
+		// it does not produce them in the same order that Gysin and Sommerville
+		// did! A more sophisticated (but more complex) permutation poem system
+		// is available at https://davidpocknee.ricercata.org/gysin/
+		function all_permutations(input) {
+			// Thanks to user delimited on StackOverflow
+			var result = [];
+			function permute(elements, data) {
+				var current, memo = data || [];
+				for (var i = 0; i < elements.length; i++) {
+					current = elements.splice(i, 1)[0];
+					if (elements.length === 0) {
+						result.push(memo.concat([current]));
+					}
+					permute(elements.slice(), memo.concat([current]));
+					elements.splice(i, 0, current);
+				}
+				return result;
+			}
+			return permute(input);
+		}
+
+		function displayPermutations() {
+			var last, text = '', permutations, i, j, main = document.getElementById('main');
+			last = document.createElement('div');
+			permutations = all_permutations(words);
+			for (i in permutations) {
+				for (j in permutations[i]) {
+					text = text + permutations[i][j] + ' ';
+				}
+				text = text + '<br />';
+			}
+			last.innerHTML = text;
+			main.appendChild(last);
+		}
+	</script>
+	<title>The Name Is...</title>
+</head>
+<body onload="displayPermutations();">
+	<header id=nav>
+		<h1>
+			<span style="float: right; font-size: 150%">
+			<a onclick=fullscreenEvt(true)>⛶</a>
+			</span>
+			The Name Is... <br>
+			based on a work by 
+	<a href="https://en.wikipedia.org/wiki/Brion_Gysin">Brion Gysin</a> &amp; 
+	<a href="https://en.wikipedia.org/wiki/Ian_Sommerville_(technician)">Ian 
+			Sommerville</a><br>
+			code by <a href="https://nickm.com">Nick Montfort,</a> 
+			also in <a href="permutation_poems.py">Python 2/3</a><br>
+			from <a href="https://nickm.com/memslam/">Memory Slam 2.0:</a> 
+			Batch-Era Text Generators<br>
+			edit line 50 of the HTML source for a new poem
+		</h1>
+	</header>
+	<div id=main></div>
+</body>
+</html>
