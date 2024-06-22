@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    </script>
 
 
     <title>Follower</title> 
@@ -15,6 +15,7 @@
     <style type="text/css">
         body {
             background-color:#333355;
+        background-image: url(https://images.unsplash.com/photo-1650698815579-4a763e068ff0?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
         }
         main {
             width: 100%;
@@ -22,11 +23,126 @@
         canvas {
             display:block;
             margin: 0 auto;
+            background-image: url(https://images.unsplash.com/photo-1650698815579-4a763e068ff0?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        }
+
+        .UH:hover {
+
+            color: red;
+            font-family: cursive;
+            font-size: 50px;
+
+
+        }
+
+        .teleport {
+            display: block;
+            background-color: yellow;
+            width: 20%;
+            right: -1080px;
+            position: relative;
+                        text-align: center;
+            bottom: -480px;
+
+        }
+
+        .want {
+            display: block;
+            background-color: yellow;
+            width: 12%;
+            right: -1170px;
+            bottom: -1280px;
+            position: relative;
+                        text-align: center;
+                        font-size: 30px;
+        }
+
+        .here {
+            display: block;
+            background-color: yellow;
+            width: 12%;
+            right: -1170px;
+            bottom: -1250px;
+            position: relative;
+                        text-align: center;
+                        font-size: 30px;
+
+
+        }
+
+        .how {
+            display: block;
+            background-color: yellow;
+            width:25%;
+            right: -1170px;
+            bottom: -1370px;
+            position: relative;
+                        text-align: center;
+                        font-size: 40px;
+        }
+        .catch {
+            display: block;
+            background-color: yellow;
+            width: 12%;
+            right: -1170px;
+            bottom: -1240px;
+            position: relative;
+                        text-align: center;
+                        font-size: 35px;
+        }
+        .correct {
+          display: block;
+            background-color: yellow;
+            width: 12%;
+            right: -1170px;
+            bottom: -1220px;
+            position: relative;
+                        text-align: center;
+                        font-size: 35px;
+        }
+        .fifty:hover {
+
+           color: indianred;
+           font-size: 80px;
+           
+        }
+        .kidding {
+            display: block;
+            background-color: yellow;
+            width: 12%;
+            right: -1170px;
+            bottom: -1200px;
+            position: relative;
+                        text-align: center;
+                        font-size: 35px;
+                        color: red;
+
+        }
+
+        .orb:hover {
+            color: blue; 
+            font-size: 50px;
         }
     </style>
 
 </head>
 <body>
+    <h1 class= "UH" style="display: block;
+            background-color: yellow;
+            width: 20%;
+            right: -1080px;
+            position: relative;
+            text-align: center;
+            bottom: -499.59px;
+            "> UH OH! </h1> <h2 class="teleport">YOU GOT TELEPORTED TO THE GOBLIN'S ORB GARDEN!</h2>
+
+    <h3 class="want"> YOU WANT TO GET OUT?</h3>
+    <h3 class="here"> HERE'S HOW! </h3>
+            <p class="catch"> Catch the correct <em class="orb">orb</em> </p>
+            <p class="correct"> Catch the correct orb <strong class="fifty">50</strong> times </p>
+            <p class="kidding"> <strong>JUST KIDDING</strong> YOU CAN'T ESCAPE</p>
+
+        
     <main>
     </main>
     <script src="sketch.js"></script>
