@@ -10,7 +10,7 @@ rm.addText(data);
 //}
 function setup(){
 // generate # of sentences
-let lines = rm.generate(20);
+let lines = rm.generate(10);
 // finding the corresponding letter DIV
 let letter = select("#letter");
 // add greeting
