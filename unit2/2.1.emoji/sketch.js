@@ -12,6 +12,6 @@ function draw() {
   fill("gold")
   circle(200,200,300)
   //draw the eyes
-  elipse(100,100,100,100)
+  elipse(200,200,200,200)
 
 }
