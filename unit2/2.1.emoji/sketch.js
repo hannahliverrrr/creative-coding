@@ -8,6 +8,7 @@ function setup() {
 
 function draw() {
   background(220);
+CSSNumericValue(200,200,100)
 
   rectMode(CENTER);
   <script>
