@@ -12,7 +12,7 @@ function draw() {
   //the face - yellow circle
   fill(100,100,300)
   stroke("black")
-  strokeWeight(10)
+  strokeWeight(12)
   circle(200,200,300)
   //draw the eyes
   fill("black")
