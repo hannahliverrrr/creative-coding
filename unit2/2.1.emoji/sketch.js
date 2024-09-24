@@ -8,5 +8,6 @@ function setup() {
 
 function draw() {
   background(220);
-  circle(200,200,100)
+  // draw the face
+  circle(300,300,200)
 }
