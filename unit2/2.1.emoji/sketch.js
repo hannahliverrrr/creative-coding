@@ -10,8 +10,8 @@ function draw() {
   background(220);
   // draw the face - yellow circle
   fill("gold")
-  stroke("#eebb55")
-  strokeWeight(20)
+  stroke("#eebb76")
+  strokeWeight(15)
   circle(200,200,300)
   //draw the eyes
 }
