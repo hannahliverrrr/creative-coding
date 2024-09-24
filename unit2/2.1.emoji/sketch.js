@@ -8,8 +8,10 @@ function setup() {
 
 function draw() {
   background(220);
-  // draw the face - yellow
+  // draw the face - yellow circle
   fill("gold")
-
   circle(200,200,300)
+  //draw the eyes
+  elipse(100,100,100,100)
+
 }
