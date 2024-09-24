@@ -9,7 +9,7 @@ function setup() {
 function draw() {
   background(220);
   // draw the face - yellow
-  fill(255,220,115)
+  fill("gold")
 
   circle(200,200,300)
 }
