@@ -8,8 +8,8 @@ function setup() {
 
 function draw() {
   background(220);
-  // draw the face
-  fill(255,255,200)
+  // draw the face - yellow
+  fill(255,235,200)
 
   circle(200,200,300)
 }
