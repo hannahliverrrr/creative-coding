@@ -17,7 +17,7 @@ function draw() {
   //draw the eyes
   fill("black")
   stroke("#000000")
-  strokeWeight(1)
+  strokeWeight(0.7)
   //left eye scrunch
   rect(100,150,80,20,30)
   //right eye scrunch
