@@ -9,6 +9,7 @@ function setup() {
 function draw() {
   background(220);
   // draw the face
-  Fill("yellow")
+  fill("yellow")
+
   circle(200,200,300)
 }
