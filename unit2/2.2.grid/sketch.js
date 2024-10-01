@@ -17,7 +17,7 @@ function draw() {
     strokeWeight(random(1,20))
     stroke(random(0,255),random(0,255),random(0,255))
     fill(random(0,255),random(0,255),random(0,255))
-    //draw the circle
+    //draw the rectangle
     rect(x*90,y*90,random(10-150))
     pop()
   }
