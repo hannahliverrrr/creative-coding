@@ -25,6 +25,6 @@ function draw() {
       
       fill(c); // set fill color for the current row
       rect(x, y, w, h);
-    }
+    } 
   }
 }
