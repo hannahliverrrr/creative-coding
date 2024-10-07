@@ -13,7 +13,7 @@ function draw() {
   let h = (height - 2 * border - (rows - 5) * 1.5 * spacing) / rows; // dimensions & positioning of row
   
   for (let row = 0; row < rows; row++) { // help identify row and color 
-    let c = lerpColor(color(200, 220, 255, 180), color(20, 25, 32), row / (rows - 1)); // gradient
+    let c = lerpColor(color(193, 220, 255, 180), color(20, 25, 32), row / (rows - 1)); // gradient
     for (let col = 0; col < cols; col++) { // help identify horizontal position of square
       let x = border + col * (w + spacing);
       let y = border + row * (h + spacing);
