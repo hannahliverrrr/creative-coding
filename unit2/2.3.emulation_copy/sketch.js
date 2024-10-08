@@ -25,7 +25,6 @@ function draw() {
       let y = border + row * (h + spacing);
       
       let yOffset = random(-h / 4, h / 4); // offset position of squares horizontally
-      
       y += yOffset;
 
       fill(c); // set fill color for the current row
