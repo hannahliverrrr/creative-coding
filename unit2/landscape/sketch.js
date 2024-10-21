@@ -20,9 +20,9 @@ function drawMountains() {
   beginShape();
   let xoff = 0;
   for (let x = 0; x <= width; x++) {
-    let y = map(noise(xoff), 0, 1, height - 150, height - 50);
+    let y = map(noise(xoff), 0, 1, height - 250, height - 100);
     vertex(x, y);
-    xoff += 0.02; // Adjust this value to change the smoothness of the mountains
+    xoff += 0.005; // Adjust this value to change the smoothness of the mountains
   }
   vertex(width, height);
   vertex(0, height);
@@ -32,8 +32,8 @@ function drawMountains() {
 function generateRocks(numRocks) {
   for (let i = 0; i < numRocks; i++) {
     let x = random(width);
-    let y = random(height - 150, height - 50); // Random y position within the mountain area
-    let size = random(10, 30); // Random size for the rocks
+    let y = random(height - 50, height - 0); // Random y position within the mountain area
+    let size = random(10, 20); // Random size for the rocks
     rocks.push({x: x, y: y, size: size});
   }
 }
@@ -48,8 +48,8 @@ function drawRocks() {
 function generateBuildings(numBuildings) {
   for (let i = 0; i < numBuildings; i++) {
     let x = random(width);
-    let widthBuilding = random(20, 50);
-    let heightBuilding = random(50, 150); // Random height for the buildings
+    let widthBuilding = random(30, 50);
+    let heightBuilding = random(100, 150); // Random height for the buildings
     buildings.push({x: x, width: widthBuilding, height: heightBuilding});
   }
 }
