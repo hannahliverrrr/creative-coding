@@ -1,13 +1,13 @@
 function setup() {
   createCanvas(400, 400);
-  // Initialize speeds with random values
+//speeds of the balls
   xspeed1 = random(5, 10);
   yspeed1 = random(5, 10);
   xspeed2 = random(5, 10);
   yspeed2 = random(5, 10);
 }
-
-let x1 = 200; // Start positions for the first circle
+//location, definitions, sizing of first circle
+let x1 = 200; 
 let y1 = 200;
 let xspeed1;
 let yspeed1;
@@ -15,8 +15,8 @@ let r1 = 255;
 let g1 = 0;
 let b1 = 0;
 let diameter1 = 50;
-
-let x2 = 200; // Start positions for the second circle
+//location, definitions, sizing of second circle
+let x2 = 200; 
 let y2 = 200;
 let xspeed2;
 let yspeed2;
@@ -28,10 +28,10 @@ let diameter2 = 50;
 function draw() {
   background(220);
 
-  // First circle
+  //first circle
   if (x1 < 0 || x1 > width) {
     xspeed1 = xspeed1 * -1;
-    // Change color on bounce
+    //change color on bounce
     r1 = random(255);
     g1 = random(255);
     b1 = random(255);
@@ -40,7 +40,7 @@ function draw() {
   
   if (y1 < 0 || y1 > height) {
     yspeed1 = yspeed1 * -1;
-    // Change color on bounce
+    //change color on bounce
     r1 = random(255);
     g1 = random(255);
     b1 = random(255);
@@ -53,10 +53,10 @@ function draw() {
   fill(r1, g1, b1);
   circle(x1, y1, diameter1);
 
-  // Second circle
+  //second circle
   if (x2 < 0 || x2 > width) {
     xspeed2 = xspeed2 * -1;
-    // Change color on bounce
+    //change color on bounce
     r2 = random(255);
     g2 = random(255);
     b2 = random(255);
@@ -64,7 +64,7 @@ function draw() {
   
   if (y2 < 0 || y2 > height) {
     yspeed2 = yspeed2 * -1;
-    // Change color on bounce
+    //change color on bounce
     r2 = random(255);
     g2 = random(255);
     b2 = random(255);
