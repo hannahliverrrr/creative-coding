@@ -44,4 +44,5 @@ function draw() {
 function mousePressed() {
   let newRipples = new Ripples(mouseX, mouseY);
   ripples.push(newRipples);
+  
 }
