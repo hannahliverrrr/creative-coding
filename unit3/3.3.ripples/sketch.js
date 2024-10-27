@@ -1,42 +1,82 @@
-//define variables
-let ripple_x = 0;
-let ripple_y = 0;
-let ripple_diameter = 0;
+//define vairables
+let debug = false;
+let x = 0;
+let y = 0;
+let d = 0;
+let score = 0;
+let speedfactor = 3;
+let speedx = speedfactor;
+let speedy = speedfactor;
+let goalx = 0;
+let goaly = 0;
+let goalSize = 30;
 
-let ripplers = [];
-
-//classify the ripples and 
-class Rippler {
-  constructor (x,y){
-    this.x = x,
-    this.y = y,
-    this.diameter = 0;
-  }
-
-  draw(){
-    this.diameter += 1;
-    circle(this.x, this.y, this.diameter);
-  }
-}
-
+//set parameters
 function setup() {
-  createCanvas(800,600);
+  createCanvas(800,800);
+
+  x = random(width);
+  y = random(height);
+
+  goalx = random(width);
+  goaly = random(height);
 }
 
+//draw the circle and square
 function draw() {
-  background(150,200,400);
-  stroke("white");
-  strokeWeight(5);
-  noFill();
+  background(220);
 
-  for (let i = 0; i < ripplers.length; i++){
-    ripplers[i].draw();
+  rect(goalx, goaly, goalSize, goalSize);
+
+  d = sqrt((x - mouseX)**2 + (y - mouseY)**2);
+  
+  x += speedx;
+  y += speedy;
+
+  circle(x,y,50);
+
+  if (mouseX > x) {
+    speedx = speedfactor;
+  }else{
+    speedx = -speedfactor;
   }
-}
-//implement the parameters above 
-function mousePressed(){
-  ripple_x = mouseX;
-  ripple_y = mouseY;
-  ripple_diameter = 0;
-  ripplers.push(new Rippler(ripple_x, ripple_y)); //got this from the yt video instructions, not really understanding this part though
+
+  if (mouseY > y){
+    speedy = speedfactor;
+  }else{
+    speedy = -speedfactor;
+  }
+
+  if (d < 25){
+    score += 1;
+    x = random(width);
+    y = random(height);
+  }
+
+  //check collision with square
+  if (
+    mouseX > goalx & 
+    mouseX < goalx + goalSize &
+    mouseY > goaly &
+    mouseY < goaly + goalSize
+  ){
+    score += 1;
+    x = random(width);
+    y = random(height);
+
+    //reset goal
+    goalx = random(width);
+    goaly = random(height);
+  }
+
+
+    if (debug){
+      textSize(30);
+      text("mouseX:" + mouseX, 50,50);
+      text("mouseY:" + mouseY, 50,80);
+      text("x: " + x, 50,120);
+      text("y: " + y, 50,150);
+      text("d: " + d, 50,180);
+      text("score: " + score, 50, 210);
+    }
 }
