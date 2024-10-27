@@ -1,48 +1,41 @@
-//classify variable name
-let ripples = []; 
+//define variables
+let ripple_x = 0;
+let ripple_y = 0;
+let ripple_diameter = 0;
+let ripplers = [];
 
-//set variable parameters
-class Ripples { 
-  constructor(x, y) {
-    this.x = x; //sets the x to wherever the click is
-    this.y = y; //sets the y to wherever the click is
-    this.diameter = 0; //starts the animation from 0 
-    this.fade = 255; //shows where the animation will start fading
+//classify the ripples and 
+class Rippler {
+  constructor (x,y){
+    this.x = x,
+    this.y = y,
+    this.diameter = 0;
   }
 
-  //draw the ripples
-  draw() {
-    this.diameter += 2; //this increases the diameter
-    this.fade -= 2; //thisincreases the fade
-    noFill(); //doesn't fill ripple with color
-    stroke(0, 0, 0, this.fade); //ripple line thickness and adds in transparency with the fade classification
-    ellipse(this.x, this.y, this.diameter); //shapes the parameters I set up into a circle
-  }
-
-  //reset the animation
-  isFinished() {
-    return this.fade <= 0; 
+  draw(){
+    this.diameter += 1;
+    circle(this.x, this.y, this.diameter);
   }
 }
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(800,600);
 }
 
 function draw() {
-  background(255); 
+  background(150,200,400);
+  stroke("white");
+  strokeWeight(5);
+  noFill();
 
-  //create the ripples with the above specifications
-  for (let i = ripples.length - 1; i >= 0; i--) {
-    ripples[i].draw();
-    if (ripples[i].isFinished()) {
-    }
+  for (let i = 0; i < ripplers.length; i++){
+    ripplers[i].draw();
   }
 }
-
-//make sure the animation happens wherever the mouse clicks the screen
-function mousePressed() {
-  let newRipples = new Ripples(mouseX, mouseY);
-  ripples.push(newRipples);
-  
+//implement the parameters above 
+function mousePressed(){
+  ripple_x = mouseX;
+  ripple_y = mouseY;
+  ripple_diameter = 0;
+  ripplers.push(new Rippler(ripple_x, ripple_y)); //got this from the yt video instructions, not really understanding this part though
 }
