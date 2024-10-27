@@ -35,19 +35,19 @@ function draw() {
 
   circle(x,y,50);
 
-  if (mouseX > x) {
+    if (mouseX > x) {
     speedx = speedfactor;
   }else{
     speedx = -speedfactor;
   }
 
-  if (mouseY > y){
+    if (mouseY > y){
     speedy = speedfactor;
   }else{
     speedy = -speedfactor;
   }
 
-  if (d < 25){
+    if (d < 25){
     score += 1;
     x = random(width);
     y = random(height);
@@ -68,7 +68,6 @@ function draw() {
     goalx = random(width);
     goaly = random(height);
   }
-
 
     if (debug){
       textSize(30);
