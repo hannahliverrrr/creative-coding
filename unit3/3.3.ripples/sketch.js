@@ -2,6 +2,7 @@
 let ripple_x = 0;
 let ripple_y = 0;
 let ripple_diameter = 0;
+
 let ripplers = [];
 
 //classify the ripples and 
