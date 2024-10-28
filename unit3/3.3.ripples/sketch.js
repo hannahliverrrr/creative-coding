@@ -1,3 +1,9 @@
+//need to figure out how to change circle to a sprite and need
+//further explanation on what everything means
+
+
+
+
 //define vairables
 let debug = false;
 let x = 0;
