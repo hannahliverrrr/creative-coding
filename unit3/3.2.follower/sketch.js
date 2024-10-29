@@ -7,6 +7,9 @@ let speedfactor = 3;
 let speedx = speedfactor;
 let speedy = speedfactor;
 let score = 0;
+let goalx = 0;
+let goaly = 0;
+let goalSize = 30;
 
 
 function setup(){
@@ -14,10 +17,16 @@ function setup(){
 
   x = random(wdith);
   y = random(height);
+
+  goalx = random(width);
+  gaoly = random(height);
 }
 
 function draw() {
   background(220);
+
+  rect(goalx, goaly, goalSize, goalSize);
+
   //distance formula
   d = sqrt((x - mouseX)**2 + (y - mouseY)**2)
 
@@ -41,12 +50,26 @@ function draw() {
     //move to the left
     speedy = -speedfactor;
   }
-
+//check for collision
   if (d < 25) {
     score += 1;
     x = random(width);
     y = random(height);
   }
+
+  //check for collision with square
+  if (
+    mouseX > goalx &
+    mouseX < goalx + goalSize &
+    mouseY > goaly &
+    mouseY < goaly + goalSize
+  ){
+    score += 1;
+    //reset follower
+    x = random(width);
+    y = random(height);
+  }
+
 
   if (debug) {
   textSize(30);
