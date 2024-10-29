@@ -13,8 +13,8 @@ let goaly = 0;
 let goalSize = 30;
 let img;
 
-function preload (){
-  img = loadImage('https://hannahliverrrr.github.io/creative-coding/unit3/3.2.follower/horse.jpeg.jpg');
+function preload () {
+  img = loadImage('https://hannahliverrrr.github.io/creative-coding/unit3/3.2.follower/horse.jpeg');
 }
 
 //set parameters
@@ -42,7 +42,7 @@ function draw() {
   x += speedx;
   y += speedy;
 
-  img(x,y,goalSize, goalSize);
+  image(img,x,y,50, 50);
 
   //if collision happens, reset sprite
     if (mouseX > x) {
@@ -91,7 +91,8 @@ function draw() {
     //add text for score when collision happens
       if (debug) {
         fill(0,160,90);
-        text("score: " + score, 20, 150);
+        textSize(30);
+        text("score: " + score, 20, 80);
       }
       
     }
