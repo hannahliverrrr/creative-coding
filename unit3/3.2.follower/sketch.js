@@ -14,7 +14,7 @@ let goalSize = 30;
 let img;
 
 function preload (){
-  img = loadImage('horse_photo.jpg');
+  img = loadImage('https://hannahliverrrr.github.io/creative-coding/unit3/3.2.follower/horse.jpeg.jpg');
 }
 
 //set parameters
