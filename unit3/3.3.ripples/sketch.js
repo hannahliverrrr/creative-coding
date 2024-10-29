@@ -33,4 +33,5 @@ class Rippler {
     this.diameter += 2; //adjust growth rate as needed
     this.fade -= 2; //adjust fade of ripples
   }
+  
 }
