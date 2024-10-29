@@ -11,10 +11,10 @@ let speedy = speedfactor;
 let goalx = 0;
 let goaly = 0;
 let goalSize = 30;
-let sprite;
+let img;
 
 function preload (){
-  sprite = loadImage('horse_photo.jpg');
+  img = loadImage('horse_photo.jpg');
 }
 
 //set parameters
@@ -42,7 +42,7 @@ function draw() {
   x += speedx;
   y += speedy;
 
-  sprite(x,y,goalSize, goalSize);
+  img(x,y,goalSize, goalSize);
 
   //if collision happens, reset sprite
     if (mouseX > x) {
