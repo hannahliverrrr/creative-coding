@@ -14,7 +14,7 @@ let goalSize = 30;
 let sprite;
 
 function preload (){
-  sprite = loadImage('hose_photo.jpg');
+  sprite = loadImage('horse_photo.jpg');
 }
 
 //set parameters
@@ -28,7 +28,7 @@ function setup() {
   goaly = random(height);
 }
 
-//draw the circle and square
+//draw the sprite and square
 function draw() {
   background(255);
 
@@ -36,14 +36,15 @@ function draw() {
   fill(50,75,100);
   rect(goalx, goaly, goalSize, goalSize);
 
+  //distance formula
   d = sqrt((x - mouseX)**2 + (y - mouseY)**2);
   
   x += speedx;
   y += speedy;
 
-  fill(150,100,50);
   sprite(x,y,goalSize, goalSize);
 
+  //if collision happens, reset sprite
     if (mouseX > x) {
     speedx = speedfactor;
   }else{
@@ -68,6 +69,7 @@ function draw() {
     mouseY > goaly &
     mouseY < goaly + goalSize
   ){
+    //update score when collision happens
     score += 1;
     x = random(width);
     y = random(height);
@@ -77,6 +79,7 @@ function draw() {
     goaly = random(height);
   }
 
+  // add text for position
     if (debug1){
       textSize(30);
       text("mouseX:" + mouseX, 50,50);
@@ -85,6 +88,7 @@ function draw() {
       text("y: " + y, 50,150);
       text("d: " + d, 50,180);
     }
+    //add text for score when collision happens
       if (debug) {
         fill(0,160,90);
         text("score: " + score, 20, 150);
