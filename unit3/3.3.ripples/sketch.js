@@ -1,87 +1,36 @@
-//need to figure out how to change circle to a sprite and need
-//further explanation on what everything means
-
-
-
-
-//define vairables
-let debug = false;
-let x = 0;
-let y = 0;
-let d = 0;
-let score = 0;
-let speedfactor = 3;
-let speedx = speedfactor;
-let speedy = speedfactor;
-let goalx = 0;
-let goaly = 0;
-let goalSize = 30;
-
-//set parameters
+//classify rippler variable
+let ripplers = [];
+//make canvas/background
 function setup() {
-  createCanvas(800,800);
-
-  x = random(width);
-  y = random(height);
-
-  goalx = random(width);
-  goaly = random(height);
+  createCanvas(800, 600);
+  background(255);
 }
-
-//draw the circle and square
+//draw ripplers
 function draw() {
-  background(220);
-
-  rect(goalx, goaly, goalSize, goalSize);
-
-  d = sqrt((x - mouseX)**2 + (y - mouseY)**2);
-  
-  x += speedx;
-  y += speedy;
-
-  circle(x,y,50);
-
-    if (mouseX > x) {
-    speedx = speedfactor;
-  }else{
-    speedx = -speedfactor;
+  background(255);
+  for (let i = 0; i < ripplers.length; i++) {
+    ripplers[i].draw();
+  }
+}
+//create ripples when clicking canvas
+function mousePressed() {
+  let r = new Rippler(mouseX, mouseY);
+  ripplers.push(r);
+}
+//construct rippler parameters
+class Rippler {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.diameter = 0;
+    this.fade = 255;
   }
 
-    if (mouseY > y){
-    speedy = speedfactor;
-  }else{
-    speedy = -speedfactor;
+  draw() {
+    noFill();
+    stroke(0, this.fade);
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+    this.diameter += 2; //adjust growth rate as needed
+    this.fade -= 2; //adjust fade of ripples
   }
-
-    if (d < 25){
-    score += 1;
-    x = random(width);
-    y = random(height);
-  }
-
-  //check collision with square
-  if (
-    mouseX > goalx & 
-    mouseX < goalx + goalSize &
-    mouseY > goaly &
-    mouseY < goaly + goalSize
-  ){
-    score += 1;
-    x = random(width);
-    y = random(height);
-
-    //reset goal
-    goalx = random(width);
-    goaly = random(height);
-  }
-
-    if (debug){
-      textSize(30);
-      text("mouseX:" + mouseX, 50,50);
-      text("mouseY:" + mouseY, 50,80);
-      text("x: " + x, 50,120);
-      text("y: " + y, 50,150);
-      text("d: " + d, 50,180);
-      text("score: " + score, 50, 210);
-    }
 }
