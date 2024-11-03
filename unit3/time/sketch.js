@@ -1,3 +1,4 @@
+//define variables
 let x_hour = 50;
 let x_minute = 50;
 let x_second = 50;
@@ -12,8 +13,15 @@ function setup(){
 }
 
 function draw(){
-  background(220);
+  //determine interpolation based on seconds
+  let secondFactor = map(second(), 0, 59, 0, 1);
+  //change color from yellow to blue
+  let bgColor = lerpColor(color(255, 255, 0), color(0, 0, 255), secondFactor);
+  
+  background(bgColor);
 
+ 
+  //textual reference of the time
   textSize(25);
   text("hour: " + hour(),50, 50);
   text("minute: " + minute(), 50, 75);
@@ -29,6 +37,7 @@ function draw(){
   mm = millis() - milliFreeze;
 
   push();
+  //draw barriers of animation
   line(50, 150, 50, 350);
   line(550,150,550,350);
   pop();
@@ -36,7 +45,7 @@ function draw(){
   //draw the circles
   push();
   noStroke();
-  fill("darkgray");
+  fill("white");
 
   //assign value to xhour using map
   x_hour = map(hour(), 0, 23, 50, 550);
