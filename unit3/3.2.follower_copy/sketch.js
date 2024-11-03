@@ -3,14 +3,14 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(235, 255, 0);
 
-  // Coordinates for the center of the eyes
+  //coordinates for the center of the eyes
   let eyeX = width / 2 - 100;
   let eyeY = height / 2;
   let eyeX2 = width / 2 + 100;
 
-  // Calculate the angle for the eyes to follow the mouse
+  //calculate the angle for the eyes to follow the mouse
   let angle1 = atan2(mouseY - eyeY, mouseX - eyeX);
   let angle2 = atan2(mouseY - eyeY, mouseX - eyeX2);
 
