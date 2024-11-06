@@ -1,16 +1,25 @@
+let cols = 10; //number of columns
+let rows = 10; //number of rows
+let margin = 10; //space between squares
+let squareSize;
+
 function setup() {
-  createCanvas(600, 600);
-  noStroke(); // Disable the stroke
-  noLoop();
+  createCanvas(1200, 800);
+  noStroke();
+  squareSize = (width - margin * (cols + 1)) / cols; //add margin space in between squares
 }
 
 function draw() {
-  background(220);
-  for (let i = 0; i < 100; i++) { // Draw 10 squares
-    fill(random(255), random(255), random(255)); // Set the fill color to a random color
-    let x = random(width); // Random x position
-    let y = random(height); // Random y position
-    rectMode(CENTER); // Set the rectangle mode to center
-    rect(x, y, random(50,100), random(50,100)); // Draw the square at the random position
+  background(255);
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      if (frameCount % 60 == 0) { // p5.js reference page https://p5js.org/reference/p5/frameCount/
+        fill(random(255), random(255), random(255), random(100, 250)); //generate color of square
+      }
+
+      let x = i * (squareSize + margin) + margin;
+      let y = j * (squareSize + margin) + margin;
+      rect(x, y, squareSize, squareSize);
+    }
   }
 }
