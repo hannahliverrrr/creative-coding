@@ -18,7 +18,7 @@ function draw() {
   let seconds = int((elapsedTime % 60000) / 1000);
 
   // Format the time as HH:MM:SS
-  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2);
+  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2); //used nf from reference page: https://p5js.org/reference/p5/nf/
 
   // Display the elapsed time in the top left corner
   text('Time: ' + timeString, 10, 40);
@@ -48,7 +48,6 @@ function draw() {
     vertex(400, 600); // Bottom point
     bezierVertex(300, 500, 300, 300, 400, 200); // Left curve
     endShape(CLOSE);
-
     pop();
   }
 }
