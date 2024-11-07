@@ -3,8 +3,8 @@ function setup() {
 }
 
 function draw() {
-  background(235, 255, 0);
-
+  background(235, 255, 0); 
+  
   //coordinates for center of eyes
   let eyeX = width / 2 - 100;
   let eyeY = height / 2;
