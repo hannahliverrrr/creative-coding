@@ -1,64 +1,54 @@
-//define variables
-let x_hour = 50;
-let x_minute = 50;
-let x_second = 50;
-let x_mil = 50;
-
-let currentSecond = 0;
-let milliFreeze = 0;
-let mm;
-
-function setup(){
-  createCanvas(600,400);
+function setup() {
+  createCanvas(800, 800);
+  background(255);
+  stroke(0);
+  textSize(32); // Set text size
+  fill(0); // Set text color to black
 }
 
-function draw(){
-  //determine interpolation based on seconds
-  let secondFactor = map(second(), 0, 59, 0, 1);
-  //change color from yellow to blue
-  let bgColor = lerpColor(color(255, 255, 0), color(0, 0, 255), secondFactor);
-  
-  background(bgColor);
+function draw() {
+  background(255); // Clear the canvas each frame
 
- 
-  //textual reference of the time
-  textSize(25);
-  text("hour: " + hour(),50, 50);
-  text("minute: " + minute(), 50, 75);
-  text("second: " + second(), 50, 100);
-  text("millisecond: " + mm, 50, 125);
+  let shapesToDraw = frameCount % 60; // Determine how many shapes to draw based on the frame count
+  let elapsedTime = millis(); // Get the elapsed time in milliseconds
 
-  if (currentSecond != second()){
-    currentSecond = second();
+  // Calculate hours, minutes, and seconds
+  let hours = int(elapsedTime / 3600000);
+  let minutes = int((elapsedTime % 3600000) / 60000);
+  let seconds = int((elapsedTime % 60000) / 1000);
 
-    milliFreeze = millis();
+  // Format the time as HH:MM:SS
+  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2);
+
+  // Display the elapsed time in the top left corner
+  text('Time: ' + timeString, 10, 40);
+
+  for (let i = 0; i < shapesToDraw; i++) {
+    push();
+    translate(400, 400); // Move to the center of the canvas
+    rotate(TWO_PI * i / 60); // Rotate by 60 degrees each iteration
+    translate(-400, -400); // Move back to the original position
+
+    // Calculate the color gradient
+    let r, g, b;
+    if (elapsedTime < 3600000) { // First hour: red to orange
+      r = map(i, 0, 59, 255, 255); // Red stays constant
+      g = map(i, 0, 59, 0, 165);   // Green increases from 0 to 165
+      b = map(i, 0, 59, 0, 0);     // Blue stays constant
+    } else { // After one hour: orange to yellow
+      r = map(i, 0, 59, 255, 255); // Red stays constant
+      g = map(i, 0, 59, 165, 255); // Green increases from 165 to 255
+      b = map(i, 0, 59, 0, 0);     // Blue stays constant
+    }
+    fill(r, g, b, 150); // Set fill color with some transparency
+
+    beginShape();
+    vertex(400, 200); // Top point
+    bezierVertex(500, 300, 500, 500, 400, 600); // Right curve
+    vertex(400, 600); // Bottom point
+    bezierVertex(300, 500, 300, 300, 400, 200); // Left curve
+    endShape(CLOSE);
+
+    pop();
   }
-
-  mm = millis() - milliFreeze;
-
-  push();
-  //draw barriers of animation
-  line(50, 150, 50, 350);
-  line(550,150,550,350);
-  pop();
-
-  //draw the circles
-  push();
-  noStroke();
-  fill("white");
-
-  //assign value to xhour using map
-  x_hour = map(hour(), 0, 23, 50, 550);
-  circle(x_hour, 180, 40);
-  //assign value to xminute using map
-  x_minute = map(minute(), 0, 59, 50, 550);
-  circle(x_minute, 240, 40);
-  //assign value to xsecond using map
-  x_second = map(second(), 0, 59, 50, 550);
-  circle(x_second, 300, 40);
-  //assign value to xmil using map
-  x_mil = map(mm, 0, 999, 50, 550);
-  circle(x_mil, 350, 20);
-  pop();
-  
 }
