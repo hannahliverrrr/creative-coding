@@ -18,7 +18,7 @@ function draw() {
   let seconds = int((elapsedTime % 60000) / 1000);
 
   // Format the time as HH:MM:SS
-  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2); //used nf from reference page: https://p5js.org/reference/p5/nf/
+  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2);
 
   // Display the elapsed time in the top left corner
   text('Time: ' + timeString, 10, 40);
@@ -35,19 +35,33 @@ function draw() {
       r = map(i, 0, 59, 255, 255); // Red stays constant
       g = map(i, 0, 59, 0, 165);   // Green increases from 0 to 165
       b = map(i, 0, 59, 0, 0);     // Blue stays constant
-    } else { // After one hour: orange to yellow
+    } else if (elapsedTime < 7200000) { // Second hour: orange to yellow
       r = map(i, 0, 59, 255, 255); // Red stays constant
       g = map(i, 0, 59, 165, 255); // Green increases from 165 to 255
       b = map(i, 0, 59, 0, 0);     // Blue stays constant
+    } else if (elapsedTime < 10800000) { // Third hour: yellow to green
+      r = map(i, 0, 59, 255, 0);   // Red decreases from 255 to 0
+      g = map(i, 0, 59, 255, 255); // Green stays constant
+      b = map(i, 0, 59, 0, 0);     // Blue stays constant
+    } else if (elapsedTime < 14400000) { // Fourth hour: green to blue
+      r = map(i, 0, 59, 0, 0);     // Red stays constant
+      g = map(i, 0, 59, 255, 0);   // Green decreases from 255 to 0
+      b = map(i, 0, 59, 0, 255);   // Blue increases from 0 to 255
+    } else { // After four hours: blue to purple
+      r = map(i, 0, 59, 0, 128);   // Red increases from 0 to 128
+      g = map(i, 0, 59, 0, 0);     // Green stays constant
+      b = map(i, 0, 59, 255, 128); // Blue decreases from 255 to 128
     }
+    
     fill(r, g, b, 150); // Set fill color with some transparency
-
+    fill(r, g, b, 150); // Set fill color with some transparency
     beginShape();
     vertex(400, 200); // Top point
     bezierVertex(500, 300, 500, 500, 400, 600); // Right curve
     vertex(400, 600); // Bottom point
     bezierVertex(300, 500, 300, 300, 400, 200); // Left curve
     endShape(CLOSE);
+
     pop();
   }
 }
