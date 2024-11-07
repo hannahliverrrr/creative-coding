@@ -10,7 +10,7 @@ function draw() {
   background(255); // Clear the canvas each frame
 
   let shapesToDraw = frameCount % 60; // Determine how many shapes to draw based on the frame count
-  let elapsedTime = millis(); // Get the elapsed time in milliseconds
+  let elapsedTime = millis() % 21600000; // Get the elapsed time in milliseconds and reset every 6 hours (21600000 ms)
 
   // Calculate hours, minutes, and seconds
   let hours = int(elapsedTime / 3600000);
@@ -47,14 +47,17 @@ function draw() {
       r = map(i, 0, 59, 0, 0);     // Red stays constant
       g = map(i, 0, 59, 255, 0);   // Green decreases from 255 to 0
       b = map(i, 0, 59, 0, 255);   // Blue increases from 0 to 255
-    } else { // After four hours: blue to purple
+    } else if (elapsedTime < 18000000) { // Fifth hour: blue to purple
       r = map(i, 0, 59, 0, 128);   // Red increases from 0 to 128
       g = map(i, 0, 59, 0, 0);     // Green stays constant
       b = map(i, 0, 59, 255, 128); // Blue decreases from 255 to 128
+    } else { // Sixth hour: purple to pink
+      r = map(i, 0, 59, 128, 255); // Red increases from 128 to 255
+      g = map(i, 0, 59, 0, 192);   // Green increases from 0 to 192
+      b = map(i, 0, 59, 128, 203); // Blue increases from 128 to 203
     }
-    
     fill(r, g, b, 150); // Set fill color with some transparency
-    fill(r, g, b, 150); // Set fill color with some transparency
+
     beginShape();
     vertex(400, 200); // Top point
     bezierVertex(500, 300, 500, 500, 400, 600); // Right curve
