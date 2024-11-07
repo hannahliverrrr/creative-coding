@@ -4,7 +4,7 @@ function setup() {
 
 function draw() {
   background(235, 255, 0); 
-  
+
   //coordinates for center of eyes
   let eyeX = width / 2 - 100;
   let eyeY = height / 2;
@@ -26,15 +26,12 @@ function drawEye(x, y, angle) {
   let eyeSize = 100;
   let pupilSize = 50;
   let pupilOffset = eyeSize / 4;
-
   //draw the white part of eye
   fill(255);
   ellipse(x, y, eyeSize, eyeSize);
-
   //calculate pupil position
   let pupilX = x + cos(angle) * pupilOffset;
   let pupilY = y + sin(angle) * pupilOffset;
-
   //draw pupil
   fill(0);
   ellipse(pupilX, pupilY, pupilSize, pupilSize);
