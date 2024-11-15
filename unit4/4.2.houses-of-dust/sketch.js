@@ -1,65 +1,31 @@
 //17 matierals, 26 places, 4 lightsources, 22 inhabitants - this multiplied together to create 38,896 possible outcomes
-
-let quatrin = 'rtbttr';
-
+let quatrain = '';
 let grammar = tracery.createGrammar({
- "material": [
-  "sand",
-  "dust",
-  "leaves",
-  "paper",
-  "tin",
-  "roots",
-  "brick",
-  "broken dishes",
-  "wood",
-  "straw",
-  "weeds"
- ],
- "origin": "a house of #materials#"
+   "origin": "A house of #material#\n#place#\nusing #light_source#\ninhabited by #inhabitants#",
+   "material": ["lies", "pancakes", "chairs", "cardboard", "birch", "sticks", "glue", "rugs", "carpet", "rubies", "diamonds", "gold", "clouds", "dust", "rain", "sponges", "leather"],
+   "place": ["under the stars", "near the school", "down the path", "in the laundry", "over the moon", "over the dunes", "in the countryside", "up the mountain", "in the sand", "next to the city", "beside the farm", "beside the waterfall", "in the forest", "by the ocean", "on the mountain", "in the city", "in the desert", "in the suburbs", "in the sky", "under the sea", "next to the park", "across the street", "behind the city", "next to the building", "under the bridge", "near the prison"],
+   "light_source": ["torches", "the sun", "fire", "explosion"],
+   "inhabitants": ["ohioans", "animals", "a pack of rodents", "a group of norwegian warriors", "vikings", "the obama family", "prison guards", "clowns", "babies", "cats", "dogs", "a school of fish", "a batch of talking cookies", "27 million horses", "unicorns", "teenage boys", "teenage girls", "middle aged white women", "popsiscle lovers", "seals", "wolves of wall street", "dinosaurs"]
 });
 
-quatrain = grammar.flatten("#origin#");
-
-
-function setup (){
-  createCanvas(800,800);
-  noLoop();
+function setup() {
+  createCanvas(800, 800);
+  frameRate(0.5);
 }
 
-function draw(){
+function draw() {
   background(220);
-
+  quatrain = grammar.flatten("#origin#");
+  textFont("Impact");
   textSize(40);
-  text(quatrain, 50, 70);
+  text(quatrain, 50,70);
 }
-
-
-
-//let poem;
-//let grammar = tracery.createGrammar({
-   //"origin": "A HOUSE OF #material#\n#place#\nUSING #light_source#\nINHABITED BY #inhabitants#",
-   //"material": ["wood", "stone", "brick", "glass", "metal"],
-   //"place": ["in the forest", "by the ocean", "on the mountain", "in the city", "in the desert", "in the suburbs", "in the sky", "under the sea", "next to the park"],
-   //"light_source": ["torches", "overhead fans", "the sun", "the LED lghtbulbs", "fireflies", "fire", "bonfire", "explosion"],
-   //"inhabitants": ["ghosts", "ohioans", "old ladies", "kiddos", "animals", "a pack of rodents", "a group of norwegian warriors", "vikings", "the obama family"]
-//});
-
-//function setup() {
-  //createCanvas(800, 800);
-  //noLoop();
-//}
-
-//function draw() {
-  //poem = grammar.flatten("#origin#");
-  //text(poem, 10, 10, width - 20, height - 20);
-//}
-//function draw() {
-  //background(220);
-  //let y = 10;
-  //for (let i = 0; i < 8; i++) { // Adjust the number of quatrains as needed
-     //poem = grammar.flatten("#origin#");
-     //text(poem, 10, y, width - 20, height - 20);
-     //y += 80; // Adjust spacing between quatrains
-  //}
-//}
+function draw() {
+  background(220);
+  let y = 10;
+  for (let i = 0; i < 5; i++) { // Adjust the number of quatrains
+     quatrain = grammar.flatten("#origin#");
+     text(quatrain, 10, y, width - 40, height - 40);
+     y += 80; // Adjust spacing between quatrains
+  }
+}
