@@ -12,7 +12,7 @@ function setup() {
   createCanvas(800, 800);
   frameRate(0.5);
 }
-
+// this section for text and size and generates the quatrain
 function draw() {
   background(220);
   quatrain = grammar.flatten("#origin#");
