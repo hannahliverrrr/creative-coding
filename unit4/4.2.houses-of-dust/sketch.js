@@ -1,7 +1,7 @@
 //17 matierals, 26 places, 4 lightsources, 22 inhabitants - this multiplied together to create 38,896 possible outcomes
 let quatrain = '';
 let grammar = tracery.createGrammar({
-   "origin": "A house of #material#\n#place#\nusing #light_source#\ninhabited by #inhabitants#",
+   "origin": "A paper town of #material#\n#place#\nusing #light_source#\ninhabited by #inhabitants#",
    "material": ["lies", "pancakes", "chairs", "cardboard", "birch", "sticks", "glue", "rugs", "carpet", "rubies", "diamonds", "gold", "clouds", "dust", "rain", "sponges", "leather"],
    "place": ["under the stars", "near the school", "down the path", "in the laundry", "over the moon", "over the dunes", "in the countryside", "up the mountain", "in the sand", "next to the city", "beside the farm", "beside the waterfall", "in the forest", "by the ocean", "on the mountain", "in the city", "in the desert", "in the suburbs", "in the sky", "under the sea", "next to the park", "across the street", "behind the city", "next to the building", "under the bridge", "near the prison"],
    "light_source": ["torches", "the sun", "fire", "explosion"],
