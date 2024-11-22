@@ -1,30 +1,32 @@
 
-let rm = RiTa.markov(2);
-
-let data = document.getElementById("source").innerText;
-rm.addText(data);
-
-function preload() {
-  result = loadStrings('');
-}
+let rm;
 
 function setup() {
-  noCanvas();
+  rm = RiTa.markov(2);
+
+  let data = document.getElementById("source").innerText;
+
+  rm.addText(data);
+
   let lines = rm.generate(6);
+
   let letter = select("#letter");
-  letter.child(createP('My Dearest Harrington,'));
-  
+
+  letter.child(createP('Dear Best Friend,'));
+
   for (let l = 0; l < lines.length; l++) {
     let paragraph = createP(lines[l]);
     letter.child(paragraph);
   }
-  letter.child(createP('Sincerely, Markov'));
+
+  letter.child(createP('Best,<br>Hannah'));
 }
 
-function mousePressed() {
-  let letter = select("#letter");
+function mousePressed(){
   letter.remove();
   letter = createDiv();
   letter.id("letter");
   setup();
 }
+
+
