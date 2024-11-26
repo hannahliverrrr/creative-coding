@@ -20,7 +20,7 @@ function setup() {
     //create chapter headings using variable and string, then generating chapter number
     content.child(createElement("h2", "Chapter " + String(chapter++).repeat(random(1,1)).toUpperCase()));
 
-   //sentence length, paragraph length, punctuation 
+   //sentence length, paragraph length, punctuation    
     for (let p = 0; p < random(5,20); p++){
       let paragraph = '';
       for (let s = 0; s < random(3,20); s++){
