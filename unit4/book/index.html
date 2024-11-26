@@ -17,13 +17,19 @@
 
 
 
-    <title>Book</title> 
+    <title>The Turkey Book</title> 
     <!--
         This is a book about Turkey in honor of the best American holiday ever.
     -->  
 
     <style type="text/css"> 
-      
+      @page {
+        @top-right {
+            content: counter(page);
+            font-size: 12pt;
+            font-family: Arial, sans-serif;
+        }
+      }
     </style>
 
     <script>
