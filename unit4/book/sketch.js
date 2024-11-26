@@ -1,6 +1,7 @@
 let word = "Turkey"
 
 let wc = 0;
+let chapter = 1;
 
 function setup() {
 
@@ -17,7 +18,7 @@ function setup() {
   // make a sentence
   while( wc < 50000){
     //create chapter headings
-    content.child(createElement("h2",String(word+" ").repeat(random(2,6)).toUpperCase()));
+    content.child(createElement("h2", "Chapter " + String(chapter++).repeat(random(1,1)).toUpperCase()));
 
    //sentence length, paragraph length, punctuation 
     for (let p = 0; p < random(5,20); p++){
