@@ -1,4 +1,6 @@
-//this code is supposed to depict a city skyline with mountains in the background. Similar to salt lake city's skyline.
+//this code is supposed to depict a city skyline with mountains in the background. 
+//tried to make it look like salt lake city.
+//originally had object orientation because I asked my brother for help and he is a comp sci major at GMU
 
 let rockX = [];
 let rockY = [];
