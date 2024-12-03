@@ -62,7 +62,7 @@ function generateBuildings(numBuildings) {
 
 function drawBuildings() {
   fill(169, 169, 169); // Grey color for buildings
-  for (let building of buildings) {
-    rect(building.x, height - building.height, building.width, building.height);
+  for (let i = 0; i < buildingX.length; i++) {
+    rect(buildingX[i], height - buildingHeight[i], buildingWidth[i], buildingHeight[i]);
   }
 }
