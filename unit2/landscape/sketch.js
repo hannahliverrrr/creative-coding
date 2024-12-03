@@ -45,8 +45,8 @@ function generateRocks(numRocks) {
 
 function drawRocks() {
   fill(100, 100, 100); // Brown color for rocks
-  for (let i = 0) {
-    ellipse(rock.x, rock.y, rock.size, rock.size);
+  for (let i = 0; i < rockX.length; i++) {
+    ellipse(rockX[i], rockY[i], rockSize[i], rockSize[i]);
   }
 }
 
