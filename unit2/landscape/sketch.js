@@ -1,14 +1,20 @@
-let rocks = [];
-let buildings = [];
+//this code is supposed to depict a city skyline with mountains in the background. Similar to salt lake city's skyline.
+
+let rockX = [];
+let rockY = [];
+let rockSize = [];
+let buildingX = [];
+let buildingWidth = [];
+let buildingHeight = [];
 
 function setup() {
   createCanvas(800, 400);
-  generateRocks(20); // Generate 20 rocks
-  generateBuildings(10); // Generate 10 buildings
+  generateRocks(10); //create 10 rocks
+  generateBuildings(5); //create 5 buildings
 }
 
 function draw() {
-  background(135, 206, 235); // Blue sky
+  background(135, 206, 235); //blue sky
   
   drawMountains();
   drawRocks();
@@ -16,13 +22,13 @@ function draw() {
 }
 
 function drawMountains() {
-  fill(34, 139, 34); // Green color for mountains
+  fill(34, 139, 34); //green color for mountains
   beginShape();
   let xoff = 0;
   for (let x = 0; x <= width; x++) {
     let y = map(noise(xoff), 0, 1, height - 250, height - 100);
     vertex(x, y);
-    xoff += 0.005; // Adjust this value to change the smoothness of the mountains
+    xoff += 0.005; //smoothness of the mountains
   }
   vertex(width, height);
   vertex(0, height);
@@ -31,16 +37,15 @@ function drawMountains() {
 
 function generateRocks(numRocks) {
   for (let i = 0; i < numRocks; i++) {
-    let x = random(width);
-    let y = random(height - 50, height - 0); // Random y position within the mountain area
-    let size = random(10, 20); // Random size for the rocks
-    rocks.push({x: x, y: y, size: size});
-  }
+    rockX[i] = random(width);
+    rockY[i] = random(height - 15, height - 0); //rock positioning
+    rockSize[i] = random(10,20); //random rock size
+    }
 }
 
 function drawRocks() {
-  fill(139, 69, 19); // Brown color for rocks
-  for (let rock of rocks) {
+  fill(100, 100, 100); // Brown color for rocks
+  for (let i = 0) {
     ellipse(rock.x, rock.y, rock.size, rock.size);
   }
 }
