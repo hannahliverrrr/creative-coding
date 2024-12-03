@@ -43,19 +43,20 @@ function generateRocks(numRocks) {
     }
 }
 
+//loop to create rock shape and color
 function drawRocks() {
-  fill(100, 100, 100); // Brown color for rocks
+  fill(100, 100, 100); //rock color
   for (let i = 0; i < rockX.length; i++) {
-    ellipse(rockX[i], rockY[i], rockSize[i], rockSize[i]);
+    ellipse(rockX[i], rockY[i], rockSize[i], rockSize[i]); 
   }
 }
 
+//generate building dimensions
 function generateBuildings(numBuildings) {
   for (let i = 0; i < numBuildings; i++) {
-    let x = random(width);
-    let widthBuilding = random(30, 50);
-    let heightBuilding = random(100, 150); // Random height for the buildings
-    buildings.push({x: x, width: widthBuilding, height: heightBuilding});
+    buildingX[i] = random(width);
+    buildingWidth[i] = random(30,50);
+    buildingHeight[i] = random(100,150); 
   }
 }
 
