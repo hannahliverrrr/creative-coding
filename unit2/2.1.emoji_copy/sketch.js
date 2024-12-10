@@ -1,51 +1,48 @@
 function setup() {
-  // create a canvas
-  createCanvas(800, 800); // Adjusted canvas size to fit three seals
+  createCanvas(800, 800); 
 
-  // disable animation
+  //disable the animation
   noLoop();
 }
 
 function draw() {
-  background(220);
+  background(50,100,255);
   
-  // Draw three seals
+  //draw seals with three diff gray shades
+  fill(50);  //dark gray
+  stroke(100);
   drawSeal(200, 650);
+  
+  fill(150); //medium gray
+  stroke(200);
   drawSeal(400, 400);
+  
+  fill(220); //light gray
+  stroke(255);
   drawSeal(600, 150);
 }
 
 function drawSeal(x, y) {
-  // the face 
-  fill(100, 100, 100);
-  stroke(150, 150, 150);
+
+  //draw the face 
   strokeWeight(10);
   circle(x, y, 300);
 
-  // draw the eyes
+  //draw the eyes
   fill("black");
   stroke("#000000");
   strokeWeight(0.7);
 
-  // left eye 
+  //left eye 
   ellipse(x - 45, y - 40, 35, 40);
 
-  // right eye 
+  //right eye 
   ellipse(x + 45, y - 40, 35, 40);
 
-  // the nose
-  fill(0);
-  stroke(0);
-  strokeWeight(1);
-  ellipse(x, y, 20, 15);
+  //the mouth/snout thingy
+  arc(x, y, 50, 50, 15, 95 );
 
-  // the mouth 
-  noFill();
-  stroke(0);
-  strokeWeight(5);
-  arc(x, y + 50, 75, 60, 0, PI);
-
-  // the whiskers
+  //the whiskers
   line(x - 100, y - 10, x - 50, y);
   line(x - 100, y + 20, x - 50, y + 20);
   line(x + 100, y - 10, x + 50, y);
