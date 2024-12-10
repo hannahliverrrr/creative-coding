@@ -1,11 +1,5 @@
-//Thise code aims to demonstrate time through a rotating spiral that gradually changes color. 
-//rotation speed matches seconds passed, the color change matches hours passed.
-//the spiral also has a mesmorizing effect, helping to illustrate the concept of time more.
-
 function setup() {
   createCanvas(800, 800);
-  background(255);
-  stroke(0);
   textSize(32); 
   fill(0); 
 }
@@ -13,73 +7,70 @@ function setup() {
 function draw() {
   background(255); 
 
-  //60 shapes create
-  let shapesToDraw = frameCount % 60; 
-  //ellapsed time, resets after 6 hours
-  let elapsedTime = millis() % 21600000; 
+  let shapesToDraw = frameCount % 60; //framecount to draw shapes for milliseconds
 
-  //calculate hours, minutes, and seconds
-  let hours = int(elapsedTime / 3600000);
-  let minutes = int((elapsedTime % 3600000) / 60000);
-  let seconds = int((elapsedTime % 60000) / 1000);
+  // get the current time
+  let now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
 
-  //format the time as HH:MM:SS
-  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2); //found this on reference page and liked it better than text function: https://p5js.org/reference/p5/nf/
+  // calculate the elapsed time in milliseconds
+  let elapsedTime = (hours * 3600000) + (minutes * 60000) + (seconds * 1000);
 
-  //display the time in the corner to show that the loop is working and matching.
+  // format the time as HH:MM:SS
+  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2); 
   text('Time: ' + timeString, 10, 40);
 
+  //draw the shape and loop it, adding the colors
   for (let i = 0; i < shapesToDraw; i++) {
     push();
     translate(400, 400); 
-    //animate rotation of shapes
     rotate(TWO_PI * i / 60);
     translate(-400, -400); 
-    //calculate the color gradient
-    let r, g, b;
 
-    //This section is a gradient loop. Every hour from 1-6, the loop goes through the color wheel. The animation starts over after 6 hours.
-    //first hour: red to orange
-    if (elapsedTime < 3600000) { 
-      r = map(i, 0, 59, 255, 255); 
-      g = map(i, 0, 59, 0, 165);   
-      b = map(i, 0, 59, 0, 0);     
-      //second hour: orange to yellow
-    } else if (elapsedTime < 7200000) { 
-      r = map(i, 0, 59, 255, 255); 
-      g = map(i, 0, 59, 165, 255); 
-      b = map(i, 0, 59, 0, 0);     
-      //third hour: yellow to green
-    } else if (elapsedTime < 10800000) { 
-      r = map(i, 0, 59, 255, 0);   
-      g = map(i, 0, 59, 255, 255); 
-      b = map(i, 0, 59, 0, 0);     
-      //fourth hour: green to blue
-    } else if (elapsedTime < 14400000) { 
-      r = map(i, 0, 59, 0, 0);     
-      g = map(i, 0, 59, 255, 0);   
-      b = map(i, 0, 59, 0, 255);   
-      //fifth hour: blue to purple
-    } else if (elapsedTime < 18000000) { 
-      r = map(i, 0, 59, 0, 128);   
-      g = map(i, 0, 59, 0, 0);     
-      b = map(i, 0, 59, 255, 128); 
-    } else { //sixth hour: purple to pink
-      r = map(i, 0, 59, 128, 255); 
-      g = map(i, 0, 59, 0, 192);   
-      b = map(i, 0, 59, 128, 203); 
-    }
-    //keep the shapes a little transparent to see gradient
+    let [r, g, b] = getColor(i);
+
     fill(r, g, b, 150); 
 
-    //create the shape 
+    //shape dimensions
     beginShape();
-    vertex(400, 200); // Top point
-    bezierVertex(500, 300, 500, 500, 400, 600); // Right curve
-    vertex(400, 600); // Bottom point
-    bezierVertex(300, 500, 300, 300, 400, 200); // Left curve
+    vertex(400, 200); 
+    bezierVertex(500, 300, 500, 500, 400, 600); 
+    vertex(400, 600); 
+    bezierVertex(300, 500, 300, 300, 400, 200); 
     endShape(CLOSE);
 
     pop();
   }
+}
+
+function getColor(i) {
+  let r, g, b;
+  if (i < 10) { // red to orange
+    r = 255;
+    g = map(i, 0, 9, 0, 165);
+    b = 0;
+  } else if (i < 20) { // orange to yellow
+    r = 255;
+    g = map(i, 10, 19, 165, 255);
+    b = 0;
+  } else if (i < 30) { // yellow to green
+    r = map(i, 20, 29, 255, 0);
+    g = 255;
+    b = 0;
+  } else if (i < 40) { // green to blue
+    r = 0;
+    g = map(i, 30, 39, 255, 0);
+    b = map(i, 30, 39, 0, 255);
+  } else if (i < 50) { // blue to purple
+    r = map(i, 40, 49, 0, 128);
+    g = 0;
+    b = 255;
+  } else { // purple
+    r = 128;
+    g = 0;
+    b = map(i, 50, 59, 255, 128);
+  }
+  return [r, g, b];
 }
