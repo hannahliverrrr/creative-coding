@@ -8,51 +8,44 @@ function setup() {
 }
 
 function draw() {
-  background(250, 75, 80);//red color for skin hue
+  background(200, 55, 60);//red color for skin as background
 
-  //center the eyes
+  //eye positioning
   let eyeX1 = width / 2 - 150;
   let eyeX2 = width / 2;
   let eyeX3 = width / 2 + 150;
   let eyeY = height / 2;
 
-  // Calculate angle for eyes to follow mouse
+  //calculate the angles of the eyes to follow the mouse
   let angle1 = calculateAngle(mouseX, mouseY, eyeX1, eyeY);
   let angle2 = calculateAngle(mouseX, mouseY, eyeX2, eyeY);
   let angle3 = calculateAngle(mouseX, mouseY, eyeX3, eyeY);
 
-  // Draw eyes
+  //draw the eyes based on positioning above
   drawEye(eyeX1, eyeY, angle1);
   drawEye(eyeX2, eyeY, angle2);
   drawEye(eyeX3, eyeY, angle3);
 }
 
 function drawEye(x, y, angle) {
-  // Eye dimensions
+  //eye features and their dimensions
   let eyeSize = 100;
   let pupilSize = 50;
   let pupilOffset = eyeSize / 4;
   
-  // Draw the white part of eye
+  //white part of the eye
   fill(255); 
   ellipse(x, y, eyeSize, eyeSize);
   
-  // Calculate pupil position
+  //pupil positioning
   let pupilX = x + cos(angle) * pupilOffset;
   let pupilY = y + sin(angle) * pupilOffset;
   
-  // Draw pupil
-  fill(80, 160, 250); // pupil color to blue
+  //draw the pupil
+  fill(80, 160, 250); 
   ellipse(pupilX, pupilY, pupilSize, pupilSize);
 }
 
 function calculateAngle(mouseX, mouseY, x, y) {
-  let d = dist(mouseX, mouseY, x, y);
-  let ang;
-  if (mouseX > x) {
-    ang = asin((mouseY - y) / d);
-  } else {
-    ang = (PI / 2 - asin((mouseY - y) / d)) + PI / 2;
-  }
-  return ang;
+  return atan2(mouseY - y, mouseX - x);
 }
