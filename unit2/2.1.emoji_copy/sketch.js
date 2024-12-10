@@ -1,3 +1,7 @@
+//I revised this to include two more seals and I changed their colors
+//I also changed the background color to blue to make it look like they're underwater
+
+
 function setup() {
   createCanvas(800, 800); 
 
