@@ -40,7 +40,7 @@ function drawSeal(x, y) {
   ellipse(x + 45, y - 40, 35, 40);
 
   //the mouth/snout thingy
-  arc(x, y, 50, 50, 15, 95 );
+  arc(x, y, 50, 50, 15, 95);
 
   //the whiskers
   line(x - 100, y - 10, x - 50, y);
