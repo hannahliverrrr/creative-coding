@@ -45,6 +45,7 @@ function draw() {
   }
 }
 
+//gradient to match new shapes being drawn
 function getColor(i) {
   let r, g, b;
   if (i < 10) { // red to orange
