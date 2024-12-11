@@ -1,3 +1,7 @@
+//this code creates a series of cube grids that involve a 3D animation. 
+//I took inspiration from the tesseract shape from Marvel, and our grid exercises from earlier in the semester.
+//My explanation of my work is submitted separately.
+
 //define variables and color list
 let colors = [];
 let spacing;
