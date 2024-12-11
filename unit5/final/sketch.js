@@ -1,41 +1,40 @@
-
-
-//define color variables
 let color1;
-let color2;
+let color2; 
+let color3; 
+let color4;
 
 function setup() {
-  createCanvas(600, 600, WEBGL); //call in 3D mode
-
-  //generate random colors for the gradient below
-  color1 = color(random(255), random(255), random(255)); 
-  color2 = color(random(255), random(255), random(255)); 
-  //used for grid rotation by cursor position
+  createCanvas(1200, 800, WEBGL); // Increase canvas width to accommodate two animations
+  color1 = color(random(0,100), random(100,255), random(100,255));
+  color2 = color(random(0,100), random(100,255), random(100,255));
+  color3 = color(random(150,255), random(100,200), random(0,100));
+  color4 = color(random(150,255), random(100,200), random(0,100));
   angleMode(DEGREES);
 }
 
 function draw() {
   background(0);
 
-  //maps out mouse position
   let angleX = map(mouseY, 0, height, -180, 180);
   let angleY = map(mouseX, 0, width, -180, 180);
 
-  //rotate the grid with the mouse movement
+  // First animation
+  push();
+  translate(-300, 0, 0); // Move the first animation to the left half
   rotateX(angleX);
-  rotateY(angleY * .2); //controls rotation sensitivity so it's not so speedy
-  rotateZ(angleY * .2); //same thing as above - don't want it rotating so fast
+  rotateY(angleY * 0.2);
+  rotateZ(angleY * 0.2);
 
   let spacing = 50;
-  let size = 40;
+  let size = 25;
 
-  for (let x = -150; x <= 150; x += spacing) {
-    for (let y = -150; y <= 150; y += spacing) {
-      for (let z = -150; z <= 150; z += spacing) {
-        let t = map(x + y + z, -450, 450, 0, 1);
+  for (let x = -100; x <= 100; x += spacing) { // Adjust range for 5 by 5 by 5 grid
+    for (let y = -100; y <= 100; y += spacing) {
+      for (let z = -100; z <= 100; z += spacing) {
+        let t = map(x + y + z, -300, 300, 0, 1);
         let c = lerpColor(color1, color2, t);
         stroke(c);
-        noFill();
+        noFill(); // Ensure the cubes are not filled
         push();
         translate(x, y, z);
         box(size);
@@ -43,4 +42,28 @@ function draw() {
       }
     }
   }
+  pop();
+
+  // Second animation
+  push();
+  translate(300, 0, 0); // Move the second animation to the right half
+  rotateX(angleX);
+  rotateY(angleY * 0.2);
+  rotateZ(angleY * 0.2);
+
+  for (let x = -100; x <= 100; x += spacing) { // Adjust range for 5 by 5 by 5 grid
+    for (let y = -100; y <= 100; y += spacing) {
+      for (let z = -100; z <= 100; z += spacing) {
+        let t = map(x + y + z, -300, 300, 0, 1);
+        let c = lerpColor(color3, color4, t);
+        stroke(c);
+        noFill(); // Ensure the cubes are not filled
+        push();
+        translate(x, y, z);
+        box(size);
+        pop();
+      }
+    }
+  }
+  pop();
 }
