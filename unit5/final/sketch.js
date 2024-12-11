@@ -66,3 +66,16 @@ function draw() {
     }
   }
 }
+
+
+
+//Hannah Livermon
+//Creative Coding - Final Project
+//Dr. Whalen
+
+
+//For my final creative coding project, I wanted to build on the grid exercises we did in class, as well as explore the many facets of 3D animations. I enjoyed the different grid variations that everyone created in class, and it was cool to see how everyone came up with their work. Building off the tools from Unit 2 and exploring how 3D animations worked in p5.js, I came up with an idea that would generate a 3D square cube sequence. I wanted to see if I could bring the graphic to life. 
+	//To do something like this, first I wanted to pull from artist inspiration online. I went through various 3D geometric art examples to see if something caught my eye. I looked through Artsnova, Reddit, and other smaller coding artist websites. The artists’ creations were very different from each other, but I was more drawn toward the grid and simple shape designs that people came up with. I wanted to test this out on my own since I felt comfortable with the grid assignment. I also needed to use WEBGL in my code to render in 3D graphics. I used to google and the p5.js reference page to understand this function since I had never heard of it before. 
+	//Now I had solid information and inspiration to start actually coding. This was a trial-and-error process, especially using 3D coordinates. I started by making cubes and tweaking the code slightly to affect its position and size. The process started to remind me of the tesseract from Marvel (lol). Going off of that, the bright neon blue color of the tesseract got me thinking about creating some type of fluorescent color gradient. This idea had me playing around with the fill of the cubes in the grid and the stroke color. Eventually, I landed on just changing the stroke color. I changed the background to black to have the colors stand out more. I then messed around with how small I wanted the squares to be and how wide they would be spaced. It looked good, but it was simple, and it felt like it needed more to it. 
+	//I then decided that instead of only having one cube, I would create more! Why have one when you could have 25 to be specific. I wanted my cubes to not only be in a grid themselves, but to be a part of a larger complex of some sort. With more trial and error and trying to figure out why my cubes were continuously changing colors for instance, I was finally able to get everything positioned correctly and oriented around my mouse movement. The final product displays rotational 3D grids in cube shape positioned evenly across the window. 
+	//This final project has shown me there is a lot of room for adding complexities to assignments. At first, I was only able to generate a few grids, but after working at it, I was able to create something better than I anticipated. Coding this has taught me a lot about how many possibilities there are when creating things. Getting inspiration from other creators gave me key insight into new possibilities with what I could have made. I didn’t know a simple grid idea could have been made into something so interesting and complex. 
