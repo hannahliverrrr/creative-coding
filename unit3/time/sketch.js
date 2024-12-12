@@ -83,4 +83,5 @@ function getColor(i, total) {
     b = map(i, 5 * total / 6, total - 1, 255, 128);
   }
   return [r, g, b];
+  
 }
