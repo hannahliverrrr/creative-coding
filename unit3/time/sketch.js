@@ -1,77 +1,86 @@
+
 function setup() {
   createCanvas(800, 800);
-  textSize(32); 
-  fill(0); 
+  angleMode(DEGREES); //call in DEGREES for rotating the pedals
 }
 
 function draw() {
   background(255); 
 
-  let shapesToDraw = frameCount % 60; //framecount to draw shapes for milliseconds
+  let now = new Date(); //pull the current time
+  let seconds = now.getSeconds(); //pulls cureent seconds
+  let minutes = now.getMinutes(); //pulls current minutes
+  let hours = now.getHours(); //pulls current hours
 
-  // get the current time
-  let now = new Date();
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
-
-  // calculate the elapsed time in milliseconds
-  let elapsedTime = (hours * 3600000) + (minutes * 60000) + (seconds * 1000);
-
-  // format the time as HH:MM:SS
-  let timeString = nf(hours, 2) + ':' + nf(minutes, 2) + ':' + nf(seconds, 2); 
-  text('Time: ' + timeString, 10, 40);
-
-  //draw the shape and loop it, adding the colors
-  for (let i = 0; i < shapesToDraw; i++) {
+  //draws the hours flower loop
+  translate(width / 2, height / 6); //positions flower
+  for (let i = 0; i < hours; i++) {
     push();
-    translate(400, 400); 
-    rotate(TWO_PI * i / 60);
-    translate(-400, -400); 
+    rotate(i * 360 / 24); //this rotates the pedal and divides it into 24 parts for hours
+    let [r, g, b] = getColor(i, 24);
+    fill(r, g, b, 150); //applies the gradient color
+    drawPetal();
+    pop();
+  }
 
-    let [r, g, b] = getColor(i);
-
+  //draws minute loop
+  translate(0, height / 3); 
+  for (let i = 0; i < minutes; i++) {
+    push();
+    rotate(i * 360 / 60); //rotates pedals and divides by 60 minutes
+    let [r, g, b] = getColor(i, 60);
     fill(r, g, b, 150); 
+    drawPetal();
+    pop();
+  }
 
-    //shape dimensions
-    beginShape();
-    vertex(400, 200); 
-    bezierVertex(500, 300, 500, 500, 400, 600); 
-    vertex(400, 600); 
-    bezierVertex(300, 500, 300, 300, 400, 200); 
-    endShape(CLOSE);
-
+  //seconds loop
+  translate(0, height / 3); 
+  for (let i = 0; i < seconds; i++) {
+    push();
+    rotate(i * 360 / 60); //rotates pedals and divides by 60 seconds
+    let [r, g, b] = getColor(i, 60);
+    fill(r, g, b, 150); 
+    drawPetal();
     pop();
   }
 }
+//actual dimensions of pedals
+function drawPetal() {
+  beginShape();
+  vertex(0, -100);
+  bezierVertex(50, -50, 50, 50, 0, 100);
+  bezierVertex(-50, 50, -50, -50, 0, -100);
+  endShape(CLOSE);
+}
 
-//gradient to match new shapes being drawn
-function getColor(i) {
+//color gradient 
+function getColor(i, total) {
   let r, g, b;
-  if (i < 10) { // red to orange
+  if (i < total / 6) { //red to orange
     r = 255;
-    g = map(i, 0, 9, 0, 165);
+    g = map(i, 0, total / 6 - 1, 0, 165);
     b = 0;
-  } else if (i < 20) { // orange to yellow
+  } else if (i < 2 * total / 6) {  //orange to yelolow
     r = 255;
-    g = map(i, 10, 19, 165, 255);
+    g = map(i, total / 6, 2 * total / 6 - 1, 165, 255);
     b = 0;
-  } else if (i < 30) { // yellow to green
-    r = map(i, 20, 29, 255, 0);
+  } else if (i < 3 * total / 6) { //yellow to green
+    r = map(i, 2 * total / 6, 3 * total / 6 - 1, 255, 0);
     g = 255;
     b = 0;
-  } else if (i < 40) { // green to blue
+  } else if (i < 4 * total / 6) { //green to blue
     r = 0;
-    g = map(i, 30, 39, 255, 0);
-    b = map(i, 30, 39, 0, 255);
-  } else if (i < 50) { // blue to purple
-    r = map(i, 40, 49, 0, 128);
+    g = map(i, 3 * total / 6, 4 * total / 6 - 1, 255, 0);
+    b = map(i, 3 * total / 6, 4 * total / 6 - 1, 0, 255);
+  } else if (i < 5 * total / 6) { //blue to purple
+    r = map(i, 4 * total / 6, 5 * total / 6 - 1, 0, 128);
     g = 0;
     b = 255;
-  } else { // purple
+  } else { //purple
     r = 128;
     g = 0;
-    b = map(i, 50, 59, 255, 128);
+    b = map(i, 5 * total / 6, total - 1, 255, 128);
   }
   return [r, g, b];
 }
